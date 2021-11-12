@@ -249,6 +249,31 @@ input, select, textarea {
 		text-align: right;
 	}
 
+.skills {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	list-style: none;
+	justify-content: flex-start;
+	list-style-position: inside;
+	padding-left: 0;
+}
+
+.skills > li {
+	display: inline-block;
+	padding-left: 0;
+	padding-right: 2ch;
+}
+
+.skills > li:before {
+	content: "•";
+	font-size: 2em;
+	margin-right: 0.1ch;
+	display: inline-block;
+	/* THIS IS A HACK */
+	transform: translate(0px, 11%);
+}
+
 /* Container */
 
 	.container {
@@ -2580,6 +2605,12 @@ input, select, textarea {
 			margin: 0;
 		}
 
+#page {
+	display: flex;
+	flex-direction: row;
+}
+		
+
 /* Header */
 
 	#header {
@@ -2612,7 +2643,12 @@ input, select, textarea {
 		position: fixed;
 		text-align: right;
 		top: 0;
+	}
+
+	#header,
+	#header-spacer {
 		width: 35%;
+		min-width: 350px;
 	}
 
 		#header > * {
@@ -2629,6 +2665,9 @@ input, select, textarea {
 			-ms-flex-grow: 1;
 			flex-grow: 1;
 			margin: 0 0 2em 0;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
 		}
 
 		#header strong, #header b {
@@ -2690,10 +2729,14 @@ input, select, textarea {
 /* Main */
 
 	#main {
-		margin-left: 35%;
 		max-width: 54em;
 		padding: 8em 4em 4em 4em;
-		width: calc(100% - 35%);
+		flex: 1;
+	}
+
+	#header,
+	#header-spacer {
+		width: 35%;
 	}
 
 		#main > section {
@@ -3006,6 +3049,10 @@ input, select, textarea {
 
 			#header {
 				padding: 6em 3em 3em 3em;
+			}
+
+			#header,
+			#header-spacer {
 				width: 30%;
 			}
 
@@ -3034,10 +3081,13 @@ input, select, textarea {
 		/* Main */
 
 			#main {
-				margin-left: 30%;
 				max-width: none;
 				padding: 6em 3em 3em 3em;
-				width: calc(100% - 30%);
+			}
+
+			#header,
+			#header-spacer {
+				width: 30%;
 			}
 
 	}
@@ -3045,6 +3095,10 @@ input, select, textarea {
 /* Medium */
 
 	@media screen and (max-width: 980px) {
+
+		#page {
+			flex-direction: column;
+		}
 
 		/* Basic */
 
@@ -3080,6 +3134,10 @@ input, select, textarea {
 					#header h1 br {
 						display: inline;
 					}
+
+				#header > .inner {
+					align-items: center;
+				}
 
 		/* Footer */
 
@@ -3128,6 +3186,10 @@ input, select, textarea {
 
 	@media screen and (max-width: 736px) {
 
+		#page {
+			flex-direction: column;
+		}
+
 		/* Basic */
 
 			h1 {
@@ -3170,6 +3232,10 @@ input, select, textarea {
 
 				#header h1 {
 					font-size: 1.35em;
+				}
+
+				#header > .inner {
+					align-items: center;
 				}
 
 		/* Footer */
